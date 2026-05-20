@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Julian Torres — Developer Portfolio</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:#0d1117;color:#c9d1d9;line-height:1.6;max-width:900px;margin:0 auto;padding:40px 20px}
+h1{font-size:2.5em;color:#58a6ff;margin-bottom:8px}
+.subtitle{color:#8b949e;font-size:1.1em;margin-bottom:24px}
+.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.badge{background:#21262d;border:1px solid #30363d;border-radius:6px;padding:4px 12px;font-size:0.85em;color:#8b949e}
+.badge.green{border-color:#238636;color:#3fb950}
+.badge.yellow{border-color:#d29922;color:#e3b341}
+.badge.blue{border-color:#1f6feb;color:#58a6ff}
+section{margin-bottom:32px}
+h2{font-size:1.3em;color:#f0f6fc;border-bottom:1px solid #21262d;padding-bottom:8px;margin-bottom:12px}
+.claim{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:12px 16px;margin-bottom:8px}
+.claim .text{font-size:0.95em}
+.claim .meta{font-size:0.8em;color:#8b949e;margin-top:4px}
+.verified{color:#3fb950}.partial{color:#e3b341}
+.footer{text-align:center;color:#484f58;font-size:0.85em;margin-top:48px;padding-top:24px;border-top:1px solid #21262d}
+a{color:#58a6ff;text-decoration:none}
+a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<h1>Julian Torres</h1>
+<p class="subtitle">Developer portfolio — maintained by <a href="https://github.com/juliantorr-es/rig-relay">Rig Relay</a></p>
+
+<div class="badge-row">
+  <span class="badge green">Python 3.12+</span>
+  <span class="badge green">AGPL-3.0</span>
+  <span class="badge blue">Desktop Cockpit</span>
+  <span class="badge blue">MCP Server</span>
+  <span class="badge blue">ACP Agent</span>
+  <span class="badge yellow">Alpha v0.1.0a1</span>
+</div>
+
+<section><h2>Integrations</h2>
+<div class="claim"><div class="text">Interactive provider onboarding for DeepSeek, OpenAI, Anthropic, Google, Mistral, OpenRouter</div><div class="meta"><span class="partial">[partial]</span> confidence: medium</div></div>
+<div class="claim"><div class="text">Four protocol surfaces: ACP Agent, MCP Client, MCP Server, WebSocket</div><div class="meta"><span class="partial">[partial]</span> confidence: medium</div></div>
+<div class="claim"><div class="text">Exposes MCP server with 16 governed tools across 5 tiers</div><div class="meta"><span class="partial">[partial]</span> confidence: medium</div></div>
+</section>
+
+<section><h2>Testing & Quality</h2>
+<div class="claim"><div class="text">Full test suite via pytest with parallel execution</div><div class="meta"><span class="verified">[verified]</span></div></div>
+<div class="claim"><div class="text">Strict type checking via pyright</div><div class="meta"><span class="verified">[verified]</span></div></div>
+<div class="claim"><div class="text">Linting and formatting via ruff</div><div class="meta"><span class="verified">[verified]</span></div></div>
+</section>
+
+<section><h2>Security</h2>
+<div class="claim"><div class="text">OWASP-aligned safety gates: least-privilege tools, per-tool permission scoping, explicit mutation authorization</div><div class="meta"><span class="partial">[partial]</span> confidence: medium</div></div>
+<div class="claim"><div class="text">Receipt-backed evidence model for every tool call, checkpoint, and consultation</div><div class="meta"><span class="partial">[partial]</span> confidence: medium</div></div>
+</section>
+
+<section><h2>Governance</h2>
+<div class="claim"><div class="text">Structured evidence model with SHA-256 hashed claims index</div><div class="meta"><span class="partial">[partial]</span> confidence: medium</div></div>
+<div class="claim"><div class="text">Multi-provider adversarial review (Council) with structured opinions and receipt-backed findings</div><div class="meta"><span class="partial">[partial]</span> confidence: medium</div></div>
+</section>
+
+<section><h2>Public Surfaces</h2>
+<div class="claim"><div class="text">Desktop cockpit with Operator, Review, System, and Technical layout modes</div><div class="meta"><span class="partial">[partial]</span> confidence: medium</div></div>
+<div class="claim"><div class="text">Command-line entry points for server/cockpit/ACP/IDE sidecar</div><div class="meta"><span class="partial">[partial]</span> confidence: medium</div></div>
+</section>
+
+<section><h2>CI/CD</h2>
+<div class="claim"><div class="text">CI workflow runs tests, lint, and type-check on every push</div><div class="meta"><span class="partial">[partial]</span> confidence: medium</div></div>
+<div class="claim"><div class="text">GitHub Actions for test suite, ruff, pyright, and schema validation</div><div class="meta"><span class="partial">[partial]</span> confidence: medium</div></div>
+</section>
+
+<section><h2>Projects</h2>
+<div class="claim">
+<div class="text"><a href="https://github.com/juliantorr-es/rig-relay">Rig Relay</a> — governed local server/control-plane with desktop cockpit for coordinating agent work and producing structured evidence.</div>
+<div class="meta">AGPL-3.0 | Python 3.12+ | Alpha</div>
+</div>
+</section>
+
+<div class="footer">
+Generated by <a href="https://github.com/juliantorr-es/rig-relay">Rig Relay</a> — public claims renderer — no raw content stored
+</div>
+</body>
+</html>
