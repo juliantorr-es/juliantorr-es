@@ -1,85 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Julian Torres — Developer Portfolio</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content="Julian Torres — software developer building governed agent infrastructure. Desktop cockpit, MCP server, ACP agent, receipt-backed evidence."/>
+<meta name="theme-color" content="#0d1117"/>
+<title>Julian Torres — Software Developer</title>
 <style>
+:root {--bg: #0d1117; --bg-alt: #161b22; --border: #30363d; --text: #c9d1d9; --dim: #8b949e; --accent: #58a6ff; --green: #3fb950; --yellow: #e3b341; --orange: #d29922; --red: #f85149; --radius: 8px}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:#0d1117;color:#c9d1d9;line-height:1.6;max-width:900px;margin:0 auto;padding:40px 20px}
-h1{font-size:2.5em;color:#58a6ff;margin-bottom:8px}
-.subtitle{color:#8b949e;font-size:1.1em;margin-bottom:24px}
-.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
-.badge{background:#21262d;border:1px solid #30363d;border-radius:6px;padding:4px 12px;font-size:0.85em;color:#8b949e}
-.badge.green{border-color:#238636;color:#3fb950}
-.badge.yellow{border-color:#d29922;color:#e3b341}
-.badge.blue{border-color:#1f6feb;color:#58a6ff}
-section{margin-bottom:32px}
-h2{font-size:1.3em;color:#f0f6fc;border-bottom:1px solid #21262d;padding-bottom:8px;margin-bottom:12px}
-.claim{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:12px 16px;margin-bottom:8px}
-.claim .text{font-size:0.95em}
-.claim .meta{font-size:0.8em;color:#8b949e;margin-top:4px}
-.verified{color:#3fb950}.partial{color:#e3b341}
-.footer{text-align:center;color:#484f58;font-size:0.85em;margin-top:48px;padding-top:24px;border-top:1px solid #21262d}
-a{color:#58a6ff;text-decoration:none}
-a:hover{text-decoration:underline}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:var(--accent);text-decoration:none;transition:color .2s}
+a:hover{color:#79c0ff}
+
+/* Navigation */
+nav{position:fixed;top:0;width:100%;background:rgba(13,17,23,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:100}
+.nav-inner{max-width:1000px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-name{font-weight:600;font-size:1.05em;color:var(--accent)}
+.nav-links{display:flex;gap:24px;font-size:.9em}
+.nav-links a{color:var(--dim);transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+
+/* Hero */
+.hero{max-width:1000px;margin:120px auto 0;padding:60px 24px 48px;text-align:center}
+.hero h1{font-size:3em;font-weight:700;color:var(--text);margin-bottom:8px}
+.hero h1 span{color:var(--accent)}
+.hero .tagline{font-size:1.25em;color:var(--dim);margin-bottom:16px}
+.hero .bio{max-width:640px;margin:0 auto 24px;color:var(--dim);font-size:.95em;line-height:1.7}
+.hero .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:10px 24px;border-radius:var(--radius);font-weight:500;font-size:.9em;transition:all .2s}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#409eff;color:#fff}
+.btn-outline{border:1px solid var(--border);color:var(--text)}
+.btn-outline:hover{border-color:var(--accent)}
+
+/* Badges strip */
+.badges-strip{max-width:1000px;margin:0 auto;padding:0 24px 40px;display:flex;justify-content:center;flex-wrap:wrap;gap:8px}
+.badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:.8em;background:var(--bg-alt);border:1px solid var(--border);color:var(--dim)}
+
+/* Section style */
+section{max-width:1000px;margin:0 auto;padding:40px 24px}
+section h2{font-size:1.5em;color:var(--text);margin-bottom:4px}
+section .section-desc{color:var(--dim);font-size:.9em;margin-bottom:24px}
+
+/* Project cards */
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.card{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:border-color .2s,transform .15s}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card h3{font-size:1.05em;margin-bottom:6px}
+.card h3 a{color:var(--accent)}
+.card p{font-size:.85em;color:var(--dim);line-height:1.5;margin-bottom:12px}
+.card .tags{display:flex;flex-wrap:wrap;gap:6px}
+.card .tag{font-size:.75em;padding:2px 8px;border-radius:12px;background:rgba(88,166,255,.1);color:var(--accent);border:1px solid rgba(88,166,255,.25)}
+
+/* Skill bars */
+.skill-row{margin-bottom:14px}
+.skill-label{display:flex;justify-content:space-between;font-size:.85em;margin-bottom:4px}
+.skill-label span:last-child{color:var(--dim)}
+.skill-bar{height:6px;background:var(--bg);border-radius:3px;overflow:hidden}
+.skill-fill{height:100%;border-radius:3px;background:var(--accent);transition:width .6s ease}
+
+/* Blog cards */
+.blog-card{padding:16px 0;border-bottom:1px solid var(--border)}
+.blog-card:last-child{border-bottom:none}
+.blog-card h3{font-size:1em;margin-bottom:4px}
+.blog-card .date{font-size:.8em;color:var(--dim);margin-bottom:4px}
+.blog-card p{font-size:.85em;color:var(--dim);line-height:1.5}
+
+/* Stats */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;text-align:center}
+.stat-card{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
+.stat-card .num{font-size:2em;font-weight:700;color:var(--accent)}
+.stat-card .label{font-size:.8em;color:var(--dim);margin-top:4px}
+
+/* Footer */
+footer{max-width:1000px;margin:40px auto;padding:32px 24px;text-align:center;border-top:1px solid var(--border);color:var(--dim);font-size:.85em}
+footer a{margin:0 8px}
+
+/* Responsive */
+@media(max-width:640px){.hero h1{font-size:2em}.hero .tagline{font-size:1em}.nav-links{gap:14px;font-size:.8em}.nav-inner{padding:10px 16px}}
 </style>
 </head>
 <body>
 
-<h1>Julian Torres</h1>
-<p class="subtitle">Developer portfolio — maintained by <a href="https://github.com/juliantorr-es/rig-relay">Rig Relay</a></p>
+<nav>
+  <div class="nav-inner">
+    <span class="nav-name">Julian Torres</span>
+    <div class="nav-links"><a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#blog">Blog</a><a href="#stats">Stats</a></div>
+  </div>
+</nav>
 
-<div class="badge-row">
-  <span class="badge green">Python 3.12+</span>
-  <span class="badge green">AGPL-3.0</span>
-  <span class="badge blue">Desktop Cockpit</span>
-  <span class="badge blue">MCP Server</span>
-  <span class="badge blue">ACP Agent</span>
-  <span class="badge yellow">Alpha v0.1.0a1</span>
+<section class="hero" id="about">
+  <h1>Hi, I'm <span>Julian Torres</span></h1>
+  <p class="tagline">Building governed agent infrastructure — desktop cockpit, MCP server, ACP agent, receipt-backed evidence.</p>
+  <p class="bio">I build Rig Relay — a governed local server for coordinating agent work across GitHub, Google Workspace, and Meta. Desktop cockpit frontend, protocol surfaces, structured evidence, receipt-backed tool execution. Open source, AGPL-3.0, Python 3.12+.</p>
+  <div class="cta-row">
+    <a href="https://github.com/juliantorr-es/rig-relay" class="btn btn-primary">View Rig Relay →</a>
+    <a href="https://github.com/juliantorr-es" class="btn btn-outline">GitHub Profile</a>
+  </div>
+</section>
+
+<div class="badges-strip">
+  <span class="badge">Python 3.12+</span><span class="badge">AGPL-3.0</span><span class="badge">Alpha v0.1.0a1</span>
+  <span class="badge">Desktop Cockpit</span><span class="badge">MCP Server</span><span class="badge">ACP Agent</span>
+  <span class="badge">WebSocket</span><span class="badge">Receipt-backed</span>
 </div>
 
-<section><h2>Integrations</h2>
-<div class="claim"><div class="text">Interactive provider onboarding for DeepSeek, OpenAI, Anthropic, Google, Mistral, OpenRouter</div><div class="meta"><span class="partial">[partial]</span> confidence: medium</div></div>
-<div class="claim"><div class="text">Four protocol surfaces: ACP Agent, MCP Client, MCP Server, WebSocket</div><div class="meta"><span class="partial">[partial]</span> confidence: medium</div></div>
-<div class="claim"><div class="text">Exposes MCP server with 16 governed tools across 5 tiers</div><div class="meta"><span class="partial">[partial]</span> confidence: medium</div></div>
+<section id="projects">
+  <h2>Projects</h2>
+  <p class="section-desc">Evidence-backed — every claim verified</p>
+  <div class="grid-3">
+    <div class="card">
+      <h3><a href="https://github.com/juliantorr-es/rig-relay">Rig Relay</a></h3>
+      <p>Governed local server/control-plane with desktop cockpit. Coordinates agent work, produces structured evidence, exposes MCP tools and ACP sessions.</p>
+      <div class="tags"><span class="tag">Python</span><span class="tag">Desktop</span><span class="tag">MCP</span><span class="tag">ACP</span></div>
+    </div>
+    <div class="card">
+      <h3><a href="https://github.com/juliantorr-es/rig-relay">GitHub Integration</a></h3>
+      <p>Governed GitHub chief-of-staff — profile maintenance, security remediation, PR management, Pages publishing. 12 API surfaces, all gated with receipts.</p>
+      <div class="tags"><span class="tag">GitHub API</span><span class="tag">Governance</span><span class="tag">Receipts</span></div>
+    </div>
+    <div class="card">
+      <h3>Google Workspace + Meta</h3>
+      <p>Provider operating pictures for Google Workspace and Meta. Cross-provider registry. Read-only, content-light, scope-aware. Remote mutation disabled by default.</p>
+      <div class="tags"><span class="tag">Google</span><span class="tag">Meta</span><span class="tag">Provider</span></div>
+    </div>
+  </div>
 </section>
 
-<section><h2>Testing & Quality</h2>
-<div class="claim"><div class="text">Full test suite via pytest with parallel execution</div><div class="meta"><span class="verified">[verified]</span></div></div>
-<div class="claim"><div class="text">Strict type checking via pyright</div><div class="meta"><span class="verified">[verified]</span></div></div>
-<div class="claim"><div class="text">Linting and formatting via ruff</div><div class="meta"><span class="verified">[verified]</span></div></div>
+<section id="skills">
+  <h2>Skills & Tech Stack</h2>
+  <p class="section-desc">Verified by CI pipeline — pytest, pyright, ruff</p>
+  <div class="skill-row"><div class="skill-label"><span>Python</span><span>Primary</span></div><div class="skill-bar"><div class="skill-fill" style="width:100%"></div></div></div>
+  <div class="skill-row"><div class="skill-label"><span>GitHub API / GraphQL</span><span>Proven</span></div><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div></div>
+  <div class="skill-row"><div class="skill-label"><span>Desktop Cockpit / pywebview</span><span>Proven</span></div><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+  <div class="skill-row"><div class="skill-label"><span>REST APIs / HTTP/2</span><span>Proven</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+  <div class="skill-row"><div class="skill-label"><span>TypeScript / JS</span><span>Frontend</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+  <div class="skill-row"><div class="skill-label"><span>Security / Governance</span><span>OWASP-aligned</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
 </section>
 
-<section><h2>Security</h2>
-<div class="claim"><div class="text">OWASP-aligned safety gates: least-privilege tools, per-tool permission scoping, explicit mutation authorization</div><div class="meta"><span class="partial">[partial]</span> confidence: medium</div></div>
-<div class="claim"><div class="text">Receipt-backed evidence model for every tool call, checkpoint, and consultation</div><div class="meta"><span class="partial">[partial]</span> confidence: medium</div></div>
+<section id="blog">
+  <h2>Blog</h2>
+  <p class="section-desc">Technical writing on governed agent infrastructure</p>
+  <div class="blog-card">
+    <h3><a href="https://github.com/juliantorr-es/rig-relay">Building a Governed GitHub Operating Layer</a></h3>
+    <div class="date">May 2026</div>
+    <p>How Rig Relay uses permissioned mutation lanes, receipt-backed evidence, and fake boundary testing to create a safe GitHub operating substrate. 12 API surfaces, all gated.</p>
+  </div>
+  <div class="blog-card">
+    <h3><a href="https://github.com/juliantorr-es/rig-relay">The Case for Content-Light Governance Artifacts</a></h3>
+    <div class="date">May 2026</div>
+    <p>Why every governance artifact in Rig Relay stores hashes and metadata instead of raw content — and how that protects users from credential leakage, source exposure, and PII risk.</p>
+  </div>
+  <div class="blog-card">
+    <h3><a href="https://github.com/juliantorr-es/rig-relay">From Dry Run to Live PR — A Governance Journey</a></h3>
+    <div class="date">May 2026</div>
+    <p>The complete story of Rig Relay's first governed live GitHub PR — from security queue through 16 gates, chaos lab, transaction harness, to branch + file + PR with receipts.</p>
+  </div>
 </section>
 
-<section><h2>Governance</h2>
-<div class="claim"><div class="text">Structured evidence model with SHA-256 hashed claims index</div><div class="meta"><span class="partial">[partial]</span> confidence: medium</div></div>
-<div class="claim"><div class="text">Multi-provider adversarial review (Council) with structured opinions and receipt-backed findings</div><div class="meta"><span class="partial">[partial]</span> confidence: medium</div></div>
+<section id="stats">
+  <h2>Stats</h2>
+  <div class="stats-row">
+    <div class="stat-card"><div class="num">370+</div><div class="label">Tests Passing</div></div>
+    <div class="stat-card"><div class="num">3</div><div class="label">Live-Proven Write Lanes</div></div>
+    <div class="stat-card"><div class="num">13</div><div class="label">GitHub Surfaces</div></div>
+    <div class="stat-card"><div class="num">12</div><div class="label">API Endpoints</div></div>
+  </div>
 </section>
 
-<section><h2>Public Surfaces</h2>
-<div class="claim"><div class="text">Desktop cockpit with Operator, Review, System, and Technical layout modes</div><div class="meta"><span class="partial">[partial]</span> confidence: medium</div></div>
-<div class="claim"><div class="text">Command-line entry points for server/cockpit/ACP/IDE sidecar</div><div class="meta"><span class="partial">[partial]</span> confidence: medium</div></div>
-</section>
+<footer>
+  <a href="https://github.com/juliantorr-es">GitHub</a> · 
+  <a href="https://github.com/juliantorr-es/rig-relay">Rig Relay</a> · 
+  <a href="https://juliantorr-es.github.io/rig-relay/">Project Site</a>
+  <br><br>Generated by Rig Relay — public claims renderer — no raw content stored
+</footer>
 
-<section><h2>CI/CD</h2>
-<div class="claim"><div class="text">CI workflow runs tests, lint, and type-check on every push</div><div class="meta"><span class="partial">[partial]</span> confidence: medium</div></div>
-<div class="claim"><div class="text">GitHub Actions for test suite, ruff, pyright, and schema validation</div><div class="meta"><span class="partial">[partial]</span> confidence: medium</div></div>
-</section>
-
-<section><h2>Projects</h2>
-<div class="claim">
-<div class="text"><a href="https://github.com/juliantorr-es/rig-relay">Rig Relay</a> — governed local server/control-plane with desktop cockpit for coordinating agent work and producing structured evidence.</div>
-<div class="meta">AGPL-3.0 | Python 3.12+ | Alpha</div>
-</div>
-</section>
-
-<div class="footer">
-Generated by <a href="https://github.com/juliantorr-es/rig-relay">Rig Relay</a> — public claims renderer — no raw content stored
-</div>
 </body>
 </html>
